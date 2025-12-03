@@ -52,6 +52,9 @@ export default function Dashboard() {
     if (!confirm("ต้องการลบเมนูนี้ออกจากรายการโปรด?")) return;
 
     try {
+      const API_BASE =
+        process.env.NEXT_PUBLIC_API_BASE ||
+        "https://pongsapakkitchen.onrender.com";
       const token = localStorage.getItem("token");
       await axios.delete(`${API_BASE}/api/favorites/${mongoId}`, {
         headers: { "x-auth-token": token },
