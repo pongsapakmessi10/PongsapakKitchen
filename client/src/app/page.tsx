@@ -18,6 +18,9 @@ export default function Home() {
   // ฟังก์ชันบันทึกเมนูโปรด
   const addToFavorite = async (recipe: any) => {
     const token = localStorage.getItem("token");
+    const API_BASE =
+      process.env.NEXT_PUBLIC_API_BASE ||
+      "https://pongsapakkitchen.onrender.com";
 
     // 1. ถ้าไม่มี Token (ยังไม่ล็อกอิน)
     if (!token) {
@@ -30,7 +33,7 @@ export default function Home() {
     try {
       // 2. ยิง API บันทึก
       await axios.post(
-        "http://localhost:5000/api/favorites",
+        `${API_BASE}/api/favorites`,
         {
           recipeId: recipe.id,
           title: recipe.title,
@@ -51,9 +54,12 @@ export default function Home() {
   const handleSearch = async () => {
     if (!ingredients) return;
     setLoading(true);
+    const API_BASE =
+      process.env.NEXT_PUBLIC_API_BASE ||
+      "https://pongsapakkitchen.onrender.com";
     try {
       // ยิงไปหา Server Express ของเรา (พอร์ต 5000)
-      const res = await axios.get(`http://localhost:5000/api/recipes/search`, {
+      const res = await axios.get(`${API_BASE}/api/recipes/search`, {
         params: { ingredients: ingredients },
       });
       setRecipes(res.data);

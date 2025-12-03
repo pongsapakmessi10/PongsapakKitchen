@@ -50,9 +50,12 @@ export default function RecipePage() {
   useEffect(() => {
     if (!id) return;
     const fetchRecipe = async () => {
+      const API_BASE =
+        process.env.NEXT_PUBLIC_API_BASE ||
+        "https://pongsapakkitchen.onrender.com";
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/recipes/${id}?lang=th`
+          `${API_BASE}/api/recipes/${id}?lang=th`
         );
         setRecipe(res.data);
       } catch (error:any) {

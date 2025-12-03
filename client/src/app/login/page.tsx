@@ -15,7 +15,10 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const API_BASE =
+        process.env.NEXT_PUBLIC_API_BASE ||
+        "https://pongsapakkitchen.onrender.com";
+      const res = await axios.post(`${API_BASE}/api/auth/login`, formData);
       
       // ✅ เก็บ Token ลงในเครื่อง (Local Storage)
       localStorage.setItem("token", res.data.token);

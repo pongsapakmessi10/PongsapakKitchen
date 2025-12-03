@@ -14,7 +14,10 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      const API_BASE =
+        process.env.NEXT_PUBLIC_API_BASE ||
+        "https://pongsapakkitchen.onrender.com";
+      await axios.post(`${API_BASE}/api/auth/register`, formData);
       showAlert("สมัครสมาชิกสำเร็จ! กรุณาเข้าสู่ระบบ", "success");
       router.push("/login");
     } catch (err: any) {

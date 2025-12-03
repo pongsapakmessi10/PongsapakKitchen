@@ -23,6 +23,9 @@ export default function Dashboard() {
   // ดึงข้อมูลเมนูโปรด
   useEffect(() => {
     const fetchFavorites = async () => {
+      const API_BASE =
+        process.env.NEXT_PUBLIC_API_BASE ||
+        "https://pongsapakkitchen.onrender.com";
       const token = localStorage.getItem("token");
       if (!token) {
         window.location.href = "/login"; // ถ้าไม่มี token ดีดไปหน้า login
@@ -30,7 +33,7 @@ export default function Dashboard() {
       }
 
       try {
-        const res = await axios.get("http://localhost:5000/api/favorites", {
+        const res = await axios.get(`${API_BASE}/api/favorites`, {
           headers: { "x-auth-token": token }, // แนบ Token ไปด้วย
         });
         setFavorites(res.data);
@@ -50,7 +53,7 @@ export default function Dashboard() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/favorites/${mongoId}`, {
+      await axios.delete(`${API_BASE}/api/favorites/${mongoId}`, {
         headers: { "x-auth-token": token },
       });
       // ลบออกจาก State ทันที (ไม่ต้องโหลดหน้าใหม่)
