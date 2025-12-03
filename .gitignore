@@ -1,0 +1,27 @@
+# Global
+.DS_Store
+*.log
+*.pem
+
+# Environment
+.env*
+
+# Client
+client/node_modules
+client/.next
+client/out
+client/.vercel
+client/.pnp
+client/.turbo
+client/.swc
+client/coverage
+client/build
+client/next-env.d.ts
+client/*.tsbuildinfo
+
+# Server
+server/node_modules
+server/.env
+server/coverage
+server/build
+server/*.tsbuildinfo
