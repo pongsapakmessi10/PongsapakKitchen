@@ -14,6 +14,10 @@ export default function Home() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const { showAlert } = useAlert();
+  const ingredientTags = ingredients
+    .split(",")
+    .map((i) => i.trim())
+    .filter(Boolean);
 
   // ฟังก์ชันบันทึกเมนูโปรด
   const addToFavorite = async (recipe: any) => {
@@ -113,7 +117,7 @@ export default function Home() {
         </div>
 
         {/* Search Box */}
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-3 sm:gap-2 mb-12">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row gap-3 sm:gap-2 mb-4">
           <input
             type="text"
             // แก้ตรงนี้ครับ 👇
@@ -137,6 +141,18 @@ export default function Home() {
             )}
           </button>
         </div>
+        {ingredientTags.length > 0 && (
+          <div className="max-w-3xl mx-auto flex flex-wrap gap-2 mb-10 px-1">
+            {ingredientTags.map((tag, idx) => (
+              <span
+                key={`${tag}-${idx}`}
+                className="bg-orange-50 text-orange-700 border border-orange-200 px-3 py-1 rounded-full text-sm font-medium"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Results Grid */}
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-7">
