@@ -71,14 +71,14 @@ export default function Dashboard() {
       <Navbar />
       
       <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">💖 เมนูโปรดของคุณ</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">🍽️ เมนูโปรดของคุณ</h1>
 
         {loading ? (
           <p>กำลังโหลด...</p>
         ) : favorites.length === 0 ? (
           <div className="text-center py-20 text-gray-400">
             <p className="text-xl">ยังไม่มีเมนูโปรด</p>
-            <Link href="/" className="text-orange-500 underline mt-2 inline-block">ไปค้นหาเมนูอร่อยๆ กันเถอะ</Link>
+            <Link href="/" className="text-white bg-orange-500 p-3 rounded-xl mt-2 inline-block hover:text-orange-500 hover:bg-white active:text-red-900">ไปค้นหาเมนูอร่อยๆ กันเถอะ</Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

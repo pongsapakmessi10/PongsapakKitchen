@@ -80,10 +80,10 @@ export default function Home() {
       {/* 1. ใส่ Navbar ไว้บนสุด */}
       <Navbar />
 
-      <div className="px-4 sm:px-6 lg:px-12 py-8">
+      <div className="px-4 sm:px-6 lg:px-12 py-8 max-w-[1200px] mx-auto">
         {/* Header */}
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
+        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10 px-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-2 leading-tight">
             <Utensils className="w-9 h-9 sm:w-10 sm:h-10 text-orange-500" />
             <SplitText
               text="Fridge to Table"
@@ -118,7 +118,7 @@ export default function Home() {
             type="text"
             // แก้ตรงนี้ครับ 👇
             placeholder="เช่น ไก่, ไข่, ข้าวสวย (หรือพิมพ์ chicken, rice)"
-            className="w-full p-4 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+            className="w-full p-4 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 text-base"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -160,7 +160,7 @@ export default function Home() {
                   className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all border border-gray-100 relative group flex flex-col"
                 >
                   {/* รูปอาหาร */}
-                  <div className="h-52 sm:h-56 overflow-hidden relative">
+                  <div className="overflow-hidden relative aspect-[4/3] w-full">
                     <Image
                       src={recipe.image}
                       alt={recipe.title}
